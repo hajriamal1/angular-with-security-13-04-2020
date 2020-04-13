@@ -1,0 +1,25 @@
+
+    <div  class="contact-form">
+        <h2>Update User</h2>
+        <form  (ngSubmit)="  onSubmit()" >
+
+
+          <p>Name</p>
+
+            <input type="text" name="name"  required [(ngModel)]="user.name" >
+
+          <p>{{this.id}}</p>
+            
+            <p>Last Name</p>
+            <input type="text" name="lastName"  required [(ngModel)]="user.username">
+            
+          
+          
+
+                     
+                    
+            <input type="submit" name="" value="Update" >
+        </form>
+    </div>
+  
+    

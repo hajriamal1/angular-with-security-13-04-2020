@@ -1,0 +1,55 @@
+
+    <div  class="contact-form">
+      <h2>Add User</h2>
+      <form   (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate >
+        <div class="form-group">
+
+        <p>Name</p>
+          <input type="text" name="name" id="name"  placeholder="Enter your name"
+          [(ngModel)]="form.name" #name="ngModel" required  />
+          <div *ngIf="f.submitted && name.invalid">
+            <div *ngIf="name.errors.required">Name is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <p> Userame</p>
+          <input type="text" name="username"   placeholder="Enter your username"
+          [(ngModel)]="form.username" #username="ngModel" required />
+        </div>
+
+        <div class="form-group">
+          <p>Email</p>
+          <input type="text" name="mail"  placeholder="Enter your email address"
+          name="email" [(ngModel)]="form.email" #email="ngModel" required email />
+        <div *ngIf="f.submitted && email.invalid">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">Email must be a valid email address</div>
+        </div>
+      </div>
+
+          <div class="form-group">
+          <p>Password</p>
+          <input type="password" name="password" placeholder="enter your password"
+          [(ngModel)]="form.password" #password="ngModel"
+            required minlength="6" />
+          <div *ngIf="f.submitted && password.invalid">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+          </div>
+        </div>
+
+            
+           
+        <div class="form-group">
+            
+          <input type="submit"  value="Add" name="submit" />
+          <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+            Signup failed!<br/>{{errorMessage}}
+          </div>
+        </div>
+
+      </form>
+  </div>
+
+ 

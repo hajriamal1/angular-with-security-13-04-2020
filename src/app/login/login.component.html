@@ -1,0 +1,32 @@
+
+<body>
+<div *ngIf="isLoggedIn; else loggedOut">
+    Logged in as {{roles}}.
+    <ng-template #loggedOut></ng-template>
+  </div>
+  <ng-template #loggedOut>
+    <div class="contact-form">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png" class="avatar">
+        <h2>Login</h2>
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>            <p>Username</p>
+            <input type="text" name="" placeholder="Enter Username"
+            name="username" [(ngModel)]="form.username" #username="ngModel"
+          required />
+            <div *ngIf="f.submitted && username.invalid">
+                <div *ngIf="username.errors.required">Username is required</div>
+              </div>
+            
+            <p>Password</p>
+            <input type="password" name="" placeholder="Enter Password"
+            name="password" [(ngModel)]="form.password" #password="ngModel"
+            required minlength="6" />
+             <div *ngIf="f.submitted && password.invalid">
+                <div *ngIf="password.errors.required">Password is required</div>
+                <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+              </div>
+            <input type="submit" name="" value="Sign In" >
+            <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+                Login failed: {{errorMessage}}
+              </div>
+        </form>
+    </div>
